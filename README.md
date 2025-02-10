@@ -14,6 +14,21 @@ bun install
 ```
 
 
+## Install Node.JS using NVM
+
+FIrst, we need to install NVM:
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+```
+
+Then, we need to install Node.JS using NVM:
+
+```bash
+nvm install v22
+nvm use default v22
+```
+
 
 # Start chaincode
 
@@ -21,13 +36,13 @@ To start the chaincode, we need to pull the network configuration and start the 
 
 ```bash
 
-export NETWORK_ID=6
-export ORG_ID=1
+export CHANNEL_NAME=testnetwork2
+export MSP_ID=Org1MSP
 export URL="http://localhost:8100/api/v1"
 export CHAINLAUNCH_USERNAME=admin
 export CHAINLAUNCH_PASSWORD="YxEIAObvsDg3"
 
-chainlaunch fabric network-config pull --network-id=$NETWORK_ID --org-id=$ORG_ID --url=$URL --username="$CHAINLAUNCH_USERNAME" --password="$CHAINLAUNCH_PASSWORD" --output=network-config.yaml
+chainlaunch fabric network-config pull --network=$CHANNEL_NAME --msp-id=$MSP_ID --url=$URL --username="$CHAINLAUNCH_USERNAME" --password="$CHAINLAUNCH_PASSWORD" --output=network-config.yaml
 
 
 export CHANNEL_NAME=testnetwork2
